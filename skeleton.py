@@ -16,11 +16,17 @@ ball_h = 100
 ball_w = 100
 ball = pygame.transform.scale(ball, (ball_h, ball_w))
 
+font = pygame.font.Font('freesansbold.ttf', 48)
+text_rect = pygame.Rect(300, 0, 48, 300)
+
+
 # Itt definialjuk a konstansokat
 WHITE = (255, 255, 255)
 GREEN = (0, 128, 0)
 VEL = 1
 FPS = 60
+
+text = font.render('Ez egy foci palya', True, WHITE)
 
 # Segitseg az iranyitashoz 
 pygame.key.set_repeat(1)
@@ -60,6 +66,7 @@ def main():
         WIN.fill(GREEN)
 
         WIN.blit(ball, (ball_rect.x, ball_rect.y))
+        WIN.blit(text, (text_rect.x, text_rect.y))
 
         # Frissitjuk a teljes kepernyot, hogy ha valtozna valami akkor az megjelenjen
         pygame.display.update()
