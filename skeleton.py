@@ -18,6 +18,7 @@ ball = pygame.transform.scale(ball, (ball_h, ball_w))
 
 # Itt definialjuk a konstansokat
 WHITE = (255, 255, 255)
+GREEN = (0, 128, 0)
 VEL = 1
 FPS = 60
 
@@ -29,7 +30,7 @@ def main():
     # sebesseggel futhat a jatek
     clock = pygame.time.Clock()
 
-    ball_rect = pygame.Rect(300, 400, ball_w, ball_w)
+    ball_rect = pygame.Rect(0, 0, ball_w, ball_w)
 
     # Vegtelen ciklus, ami eletben tarja az ablakot, egyebkent rogton bezarodna 
     # az ablaak, amit fent letrehoztunk, mert veget erna a program
@@ -45,9 +46,18 @@ def main():
                 # Ha rakattintunk az x-re, akkor vege a vegtelen ciklusnak
                 run = False
 
+            if event.type == KEYDOWN:
+                if event.key == K_d:
+                    ball_rect.x += VEL
+                if event.key == K_a:
+                    ball_rect.x -= VEL
+                if event.key == K_w:
+                    ball_rect.y -= VEL
+                if event.key == K_s:
+                    ball_rect.y += VEL
 
         # Beallitjuk a hatterer szinet
-        WIN.fill(WHITE)
+        WIN.fill(GREEN)
 
         WIN.blit(ball, (ball_rect.x, ball_rect.y))
 
